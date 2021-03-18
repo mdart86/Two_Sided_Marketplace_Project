@@ -1,0 +1,30 @@
+<h1>Your Order</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Aircraft Model</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @product.name %></td>
+            <td><%= @product.aircraft_model %></td>
+            <td><%= number_to_currency @product.price %></td>
+        </tr>
+    </tbody>
+</table>
+<button id="pay-now">Checkout</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    const stripe = Stripe('<%= ENV["STRIPE_PK_TEST"] %>')
+
+    function redirectToStripe() {
+        stripe.redirectToCheckout({ sessionId: '<%= @session.id %>'})
+    }
+
+    document.querySelector("#pay-now").addEventListener("click", redirectToStripe)
+</script>

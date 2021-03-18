@@ -1,0 +1,39 @@
+<div class="logout">
+    <% if user_signed_in? %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
+        <span class="logged-in-as">Logged in as: <%= current_user.email %></span>
+    <% else %>
+        <%= link_to "Login", new_user_session_path, class: "has-background-dark has-text-light p-2" %>
+        <%= link_to "Sign Up" , new_user_registration_path, class: "has-background-dark has-text-light p-2" %>
+    <% end %>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "Main Dashboard", root_path, class:"btn btn-primary btn-lg" %>
+        </li>
+        <% if current_user && current_user.has_role?(:admin) %>
+          <li class="nav-item">
+            <%= link_to "User Profile", user_profiles_path, class:"btn btn-primary btn-lg" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to "Sellers Area", new_product_path, class:"btn btn-primary btn-lg" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Buying Area", show_product_path, class:"btn btn-primary btn-lg" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Orders</a>
+        </li>
+      <% end %>
+    </ul>
+  
+  </div>
+</nav>
+

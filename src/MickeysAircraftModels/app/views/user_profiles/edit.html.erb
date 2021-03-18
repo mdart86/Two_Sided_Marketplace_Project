@@ -1,0 +1,11 @@
+<%= render "shared/navbar" %>
+<br>
+    <h1 class="edit-user-page-text">Editing User Profile</h1>
+<br>
+<br>
+    <%= render 'form', user_profile: @user_profile, address: @address %>
+<br>
+<br>
+    <p class="edit-user-page-text"><%= link_to 'Back', user_profiles_path %></p>
+<br>
+<br>

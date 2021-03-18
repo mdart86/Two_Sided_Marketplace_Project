@@ -1,0 +1,11 @@
+<%= render "shared/navbar" %>
+<br>
+    <h1 class="new-user-page-text">New User Profile</h1>
+<br>
+<br>
+    <%= render 'form', user_profile: @user_profile, address: @address %>
+<br>
+<br>
+    <p class="new-user-page-text"><%= link_to 'Back', root_path %></p>
+<br>
+<br>

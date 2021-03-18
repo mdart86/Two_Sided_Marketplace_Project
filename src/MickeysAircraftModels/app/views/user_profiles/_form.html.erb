@@ -1,0 +1,48 @@
+<div class="entry-card" style="width: 18rem;">
+  <div class="entry-card-body">
+  <br>
+    <%= form_with model: @user_profile, local: true do |form| %>
+        <div class="field">
+            <%= form.label :first_name %>
+            <%= form.text_field :first_name %>
+        </div>
+        <div class="field">
+            <%= form.label :last_name %>
+            <%= form.text_field :last_name %>
+        </div>
+        <div class="field">
+            <%= form.label :age%>
+            <%= form.number_field :age %>
+        </div>
+        <div class="field">
+            <%= form.label :contact_number%>
+            <%= form.text_field :contact_number %>
+        </div>
+        <br>
+        <h3>Address Details</h3>
+        <%= form.fields_for :address do |address_form| %>
+        <div>
+            <%= address_form.label :street_number %>
+            <%= address_form.text_field :street_number %>
+        </div>
+        <div>
+            <%= address_form.label :street_name %>
+            <%= address_form.text_field :street_name %>
+        </div>
+        <div>
+            <%= address_form.label :suburb %>
+            <%= address_form.text_field :suburb %>
+        </div>
+        <div>
+            <%= address_form.label :state %>
+            <%= address_form.text_field :state %>
+        </div>
+        <div>
+            <%= address_form.label :postcode %>
+            <%= address_form.text_field :postcode %>
+        </div>
+        <% end %>
+            <%= form.submit %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+<br>
+<%= render "/shared/navbar" %>
+<br>
+<br>
+<div class="entry-card" style="width: 30rem;">
+  <div class="entry-card-body">
+    <p>
+      <strong>Name:</strong>
+      <%= @product.name %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @product.description %>
+    </p>
+
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency @product.price %>
+    </p>
+
+    <p>
+      <strong>Condition:</strong>
+      <%= @product.condition %>
+    </p>
+
+    <p>
+      <strong>Scale:</strong>
+      <%= @product.scale %>
+    </p>
+
+    <p>
+      <strong>Aircraft model:</strong>
+      <%= @product.aircraft_model %>
+    </p>
+
+    <p>
+      <strong>Seller's User ID:</strong>
+      <%= @product.user.id %>
+    </p>
+
+    <p>
+      <%= image_tag @product.picture, class: "product_image" %>
+    </p>
+
+    <p>
+    <%= link_to "Buy Now", new_order_path(product_id: @product.id) %>
+    </p>
+
+    <% if current_user == @product.user_id %>
+      <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-warning" %></td>
+    <% end %>
+    <% if current_user && current_user.has_role?(:admin) %>
+      <%= link_to 'Destroy', @product, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+    <%= link_to 'Back', products_path, class:"btn btn-primary" %>
+  </div>
+</div>
