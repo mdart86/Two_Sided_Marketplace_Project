@@ -1,13 +1,13 @@
 # Michael Dart - T2A2 Assignment - Marketplace Project
-
 ## **R7** - *Purpose of the Market Place*
 <br>
 
-This application has built to provide an easy way for aviation enthusiasts to sell and purchase model aircraft. 
+This application has built to provide an easy way for aviation enthusiasts to sell and purchase model aircraft in one single secure marketplace.
 
 ## **R8** - *Why does this marketplace need to be built*
-
 <br>
+
+Aviation models can be rather rare and sort after for some of them whilst others are more common and available through many different sources. This marketplace aims to for the seller and buyers to transact in one single area.
 
 ## **R9** - *Deployment*
 <br>

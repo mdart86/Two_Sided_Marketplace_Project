@@ -69,7 +69,7 @@ class UserProfilesController < ApplicationController
     # @user_profiles = current_user.find(id: user_profile_params[:id, address_attributes:[:id]])
     # @user_profiles = UserProfile.find_by_id
     # @user_profiles.find_by_id(user_profile_params)
-    @user_profiles = UserProfile.find(params[:id])
+    @user_profiles = UserProfile.find(user_profile_params[:id])
   end
 
   def user_profile_params
