@@ -1,8 +1,0 @@
-<section class="card">
-	<h1><%=user_profile(user_profile.id).first_name%><%=user_profile(user_profile.id).last_name%></h1>	
-		<p>
-		<%= link_to "Edit", edit_user_profile_path(user_profile)%>
-		<%= link_to "Delete", destroy_user_profile_path(user_profile), method: :delete, data: { confirm: "Are you sure?" } %>
-		</p>
-</section>
-

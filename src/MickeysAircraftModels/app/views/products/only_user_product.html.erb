@@ -1,0 +1,29 @@
+<h1>The Products you have listed are</h1>
+<div class="table-responsive">
+  <div class="buying-table">
+    <table class="table">
+      <thead class="thead-dark">
+
+          <tr>
+            <th scope="col-sm">Name</th>
+            <th scope="col-sm">Price</th>
+            <th scope="col-sm">Condition</th>
+            <th scope="col-sm">Aircraft Model</th>
+            <th scope="col-sm">See More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @product.user_id == current_user.id %>
+            <tr>
+              <td><%= @product.name %></td>
+              <td><%= number_to_currency @product.price %></td>
+              <td><%= @product.condition %></td>
+              <td><%= @product.aircraft_model %></td>
+              <td><%= link_to 'Show', product %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </table>
+  </div>
+<br>

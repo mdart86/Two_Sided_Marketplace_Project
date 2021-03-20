@@ -53,7 +53,7 @@ class UserProfilesController < ApplicationController
 
     @user_profile.update(user_profile_params)
 
-    redirect_to root_path
+    redirect_to user_profile_path(current_user.id)
   end
 
   def destroy
@@ -69,7 +69,7 @@ class UserProfilesController < ApplicationController
     # @user_profiles = current_user.find(id: user_profile_params[:id, address_attributes:[:id]])
     # @user_profiles = UserProfile.find_by_id
     # @user_profiles.find_by_id(user_profile_params)
-    @user_profiles = UserProfile.find(user_profile_params[:id])
+    @user_profile = current_user.user_profile  
   end
 
   def user_profile_params

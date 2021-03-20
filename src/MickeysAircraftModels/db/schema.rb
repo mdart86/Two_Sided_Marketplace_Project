@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # This table is was generated from the Create_Active_Storage_Tables.Active_Store migration which is used to store images with a cloud storage provider
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  # this table was generated from the migration, create_address
   create_table "addresses", force: :cascade do |t|
     t.string "street_number"
     t.string "street_name"
@@ -53,8 +55,11 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_profile_id"], name: "index_addresses_on_user_profile_id"
+    # The t.index line references the UserProfile table which is the foreign key and helps associate the has_one relationship stated in thee user_profile model
   end
 
+
+  # This is generated from the migration of create_orders
   create_table "orders", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -63,8 +68,10 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
+    # The t.index line references the User table which is the foreign key to the User of which an order belongs to
   end
 
+  # This table is genrated fromt he migration of create_productions
   create_table "products", force: :cascade do |t|
     t.string "name", limit: 30
     t.text "description"
@@ -77,7 +84,10 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
+  # The t.index line references the User table which is the foreign key to the User of which a product belongs to
+  
 
+  # This table was generated from the rolify_create_roles migration using a third party provider for authorisation, Rolify which is a gem in this application
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -87,7 +97,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
+  # The t.index lines here reference the User table of which the rolify sets within the User Model
 
+  # This was created from the user_profiles migration
   create_table "user_profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -98,7 +110,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_080651) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
+  # The t.index line here references the User model of which a has one relationship is in place
 
+  # This table was generated from the devise_create_users migration when the devise authenication solution was implemented
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

@@ -8,6 +8,14 @@ class UserProfile < ApplicationRecord
 
   has_one :address
   accepts_nested_attributes_for :address, allow_destroy: true
+
+
+  before_save :remove_whitespace
+  
+  private
+  def remove_whitespace
+    self.first_name = self.first_name.strip
+    self.last_name = self.last_name.strip
+    self.contact_number = self.contact_number.strip
+  end
 end
-
-

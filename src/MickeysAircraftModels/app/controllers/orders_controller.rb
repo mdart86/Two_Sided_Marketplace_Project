@@ -34,12 +34,13 @@ class OrdersController < ApplicationController
 
     # @orders = current_user.create_order(order_params)
     # order = Order.create(:name, :description, :amount, :quantity)
+
   end
 
   def cancel
     render html: "<h2>Your order was cancelled... redirecting you back to the Buying Area</h2>".html_safe 
     
-    redirect_url "http://localhost:3000/products"
+  
   end
 
   # private

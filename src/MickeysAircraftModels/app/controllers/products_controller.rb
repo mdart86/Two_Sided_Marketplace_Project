@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def only_user_product
+  end
+
   # GET /products/new
   def new
     @product = Product.new
@@ -58,6 +61,10 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def show_user_products
+      @product = current_user.product
+    end
+
     def set_product
       @product = Product.find(params[:id])
     end
