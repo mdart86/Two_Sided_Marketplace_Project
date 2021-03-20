@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 
 <p id="notice"><%= notice %></p>
-<% if current_user %>
+<% if current_user.has_role?(:admin) %>
 <h1>User Profiles</h1>
 
 <table>
@@ -40,3 +40,4 @@
   </tbody>
 </table>
 <% end %>
+

@@ -4,7 +4,7 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles or /user_profiles
   def index
-    @user_profiles = UserProfile.all
+    @user_profiles = UserProfile.all.preload(:address).order(last_name: :asc)
   end
 
   # GET /user_profiles/1 or /user_profiles/1

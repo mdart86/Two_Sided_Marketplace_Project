@@ -53,6 +53,18 @@ A walk through video has been provided and is stored in the ```/docs``` folder. 
 <br>
 <br>
 
+## **ADDTIONAL NOTES**
+<br>
+
+***Sign-up function*** during production this function was working to it's full abilities however, after a double check on 20 Mar, the function wasn't working. I didn't alter the code for the registrations form past the initial styling, after which it was working.
+
+<br>
+
+***Checkout*** the checkout button to go to Stripe may or may not work. You may have to refresh the page then click on it to be redirected to Stripe.
+
+<br>
+<br>
+
 ## **R7** - *Purpose of the Market Place*
 <br>
 
@@ -214,6 +226,98 @@ And be redirected back to my purchased items
 
 ![image](https://user-images.githubusercontent.com/72178242/111862012-2ac00f00-899e-11eb-90de-5c3e60700151.png)
 
+<br>
+
+## **R15** - *High Level Compenents*
+
+The application is built using the Rails Framework which follows a MVC structure. MVC stands for Models, Views and Controller.
+<br>
+
+In this application we have:
+<br>
+
+**Models**
+
+User - for the Users - you can think of this as the main model as it has a relationship with most models (excluding address model, this is connected to the User_Profile model)
+
+Role - for the roles that are assigned to users
+
+User_Profile - for the user profile which also has a nested form, accepting nested attributes from the Address model
+
+Address - for the address information of a user profile
+
+Product - for the products information
+
+Orders - for items ordered
+
+<br>
+Each model is responsible for talking to the database, which it extracts information from when a user (via the view) initiates an action handled by the controller.
+
+<br>
+<br>
+<br>
+
+**Views**
+<br>
+Users
+The Users view is responsible for handling the authentication process (sign-in, sign-up, forgot your password). Through the authentication solution of Devise (and Rails magic), when a user submits an action it will ask the model to connect to the database, extracting and verifying their credentials or creating their creditentials (upon sign-up).
+
+<br>
+<br>
+
+User Profile and Products
+
+Both these areas have similar functions where they use the CRUD (create, read, update and destroy) functionalites to perform actions.
+<br>
+<br>
+
+**Create**
+<br>
+In this area, the user can either create their profile or a product to sell. The create profile function is an action within the controller that passes the information the user has entered into the database. The model responsbile for capturing this information, checking it (along with any validations or relationships) and sending it to the database.
+
+<br>
+<br>
+
+**Read**
+<br>
+This is where a user (or an authorised user, depending on the function) has the ability to see their user profile or product. When the action in the controller is initiated, the model will extract the information request and display it to the user in the view.
+
+<br>
+<br>
+
+**Update**
+<br>
+This one is very similar to create, the main difference here is the user is updating existing that that exists within the database. The controllers and models perform actions in the same way.
+
+<br>
+<br>
+
+**Destroy**
+A destroy function, or better called delete allows the user to destroy an item that exists within the database. In this case, the users have the ability (depending on their authorisation) to delete a profile or product. When the user requests this via the view, the controller action method is initiated to ask the model to remove this item from the database. At this point the item is removed as long as it doesn't have any dependicies on other models
+
+<br>
+<br>
+
+**Controllers**
+<br>
+When the user submits an actioned in the view (one of the CRUD actions for example) it will either send the action to the model (for creating, updating and destroy) to update the database or it will send the information (for reading and updating) to the view as the user is requesting it.
+
+In this application, this happens in most areas of the application, through the User Profile area or the Sellers/Buying area.
+
+<br>
+<br>
+
+**Partial**
+<br>
+A partial (or sometimes called Shared) is the parts of the application that are reused in multiple areas. 
+
+A good example of this is Navigation bars or Forms. Nav bars rarely change accross multiple screens and there for are invoked into a view page from a partial file, this file can used in multiple views without having to reuse the code, making it easier for developers and limiting duplicating code.
+
+<br>
+
+The same can go for a form. A form can be similar for multiple purposes, the best example is for creating and updating, as the fields are the same. Rather than re-write code, a developer can envoke a form into a view, and with some logic, can customise it (for eg. prepopulate fields for editing) when required.
+
+<br>
 <br>
 
 ## **R16** - *Third Party Services*
