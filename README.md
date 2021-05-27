@@ -15,8 +15,8 @@
   Please check lines 23, 24 and 25 (snippet below) and update the credentials as needed.
 
     ```rb
-    username: mdart
-    password: brisbane1
+    username: blanked out
+    password: blanked out
     port: 5433
     ```
 <br>
